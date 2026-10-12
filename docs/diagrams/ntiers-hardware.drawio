@@ -1,0 +1,91 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="NQCGWn-JXf9XplwU7siO">
+    <mxGraphModel dx="1414" dy="818" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#FFFFFF,#000000)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KIfqwpqvIgpDve812TTp-1" parent="1" style="fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="350" width="708" x="60" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-7" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="60" width="129" x="60" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-6" parent="KIfqwpqvIgpDve812TTp-7" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="60" width="129" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-4" parent="KIfqwpqvIgpDve812TTp-7" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;prIcon=api" value="" vertex="1">
+          <mxGeometry height="48" width="50" y="6" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-5" parent="KIfqwpqvIgpDve812TTp-7" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Kube cluster" vertex="1">
+          <mxGeometry height="30" width="80" x="49" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-17" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="200" width="200" x="78" y="518" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-9" parent="KIfqwpqvIgpDve812TTp-17" style="fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="200" width="200" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-11" connectable="0" parent="KIfqwpqvIgpDve812TTp-17" style="group" value="" vertex="1">
+          <mxGeometry height="80" width="196" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-10" parent="KIfqwpqvIgpDve812TTp-11" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="70" width="70" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-2" parent="KIfqwpqvIgpDve812TTp-11" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/assets/kubernetes/1/master.svg;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-33" parent="KIfqwpqvIgpDve812TTp-11" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Owner : Lilian&lt;/div&gt;&lt;div&gt;HP Laptop&lt;/div&gt;&lt;div&gt;16 cpu,&amp;nbsp;16G RAM&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="121" x="75" y="9" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-14" parent="KIfqwpqvIgpDve812TTp-17" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;editableCssRules=.*;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCI+PHBhdGggZD0iTTExNC40MzQgMTEuODc1SDEzLjU0N0M2LjA3NCAxMS44OTguMDIzIDE3Ljk0OSAwIDI1LjQyMnY3Ny43MTljLjAyMyA3LjQ3MiA2LjA3NCAxMy41MjMgMTMuNTQ3IDEzLjU0NmgxMDAuODg3YzcuNDcyLS4wMjMgMTMuNTIzLTYuMDc0IDEzLjU0Ni0xMy41NDZWMjUuNDJjLS4wMjMtNy40NzItNi4wNzQtMTMuNTIzLTEzLjU0Ni0xMy41NDZ6TTU0LjA3OCA4OC4wOTRsLTI0LjYyMSAxNC4zMDhhNi41OTIgNi41OTIgMCAwMS05LjAwOC0yLjM4NiA2LjU5IDYuNTkgMCAwMTIuMzg3LTkuMDA4bDI0LjYyMS0xNC4zMDlhNi41ODcgNi41ODcgMCAwMTkuMDEyIDIuMzgzIDYuNTkzIDYuNTkzIDAgMDEtMi4zOSA5LjAxMnptOS42ODgtMjEuODAxaC0uMDMyYTYuNTkgNi41OSAwIDAxLTYuNTU4LTYuNjE3bC4xMjUtMjguMzY0YTYuNTg3IDYuNTg3IDAgMDE2LjU4Ni02LjU2MmguMDMxYTYuNTkgNi41OSAwIDAxNi41NTkgNi42MTdsLS4xMjUgMjguMzY3YTYuNTg4IDYuNTg4IDAgMDEtNi41ODYgNi41NTl6bTQzLjU2MiAzMy43MDNhNi41ODUgNi41ODUgMCAwMS05IDIuNDFMNzMuNjcyIDg4LjE3MmE2LjU4OSA2LjU4OSAwIDExNi41OS0xMS40MWwyNC42NTYgMTQuMjM0YTYuNTg2IDYuNTg2IDAgMDEyLjQxIDl6bTAgMCIgZmlsbD0iI2ZmYzUxOSIvPjwvc3ZnPg==;" value="K3S" vertex="1">
+          <mxGeometry height="64.41" width="64.41" x="67.79000000000002" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-19" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="200" width="200" x="313" y="518" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-20" parent="KIfqwpqvIgpDve812TTp-19" style="fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="200" width="200" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-21" connectable="0" parent="KIfqwpqvIgpDve812TTp-19" style="group" value="" vertex="1">
+          <mxGeometry height="80" width="80" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-22" parent="KIfqwpqvIgpDve812TTp-21" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="70" width="70" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-3" parent="KIfqwpqvIgpDve812TTp-21" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/assets/kubernetes/1/node.svg;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-24" parent="KIfqwpqvIgpDve812TTp-19" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;editableCssRules=.*;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCI+PHBhdGggZD0iTTExNC40MzQgMTEuODc1SDEzLjU0N0M2LjA3NCAxMS44OTguMDIzIDE3Ljk0OSAwIDI1LjQyMnY3Ny43MTljLjAyMyA3LjQ3MiA2LjA3NCAxMy41MjMgMTMuNTQ3IDEzLjU0NmgxMDAuODg3YzcuNDcyLS4wMjMgMTMuNTIzLTYuMDc0IDEzLjU0Ni0xMy41NDZWMjUuNDJjLS4wMjMtNy40NzItNi4wNzQtMTMuNTIzLTEzLjU0Ni0xMy41NDZ6TTU0LjA3OCA4OC4wOTRsLTI0LjYyMSAxNC4zMDhhNi41OTIgNi41OTIgMCAwMS05LjAwOC0yLjM4NiA2LjU5IDYuNTkgMCAwMTIuMzg3LTkuMDA4bDI0LjYyMS0xNC4zMDlhNi41ODcgNi41ODcgMCAwMTkuMDEyIDIuMzgzIDYuNTkzIDYuNTkzIDAgMDEtMi4zOSA5LjAxMnptOS42ODgtMjEuODAxaC0uMDMyYTYuNTkgNi41OSAwIDAxLTYuNTU4LTYuNjE3bC4xMjUtMjguMzY0YTYuNTg3IDYuNTg3IDAgMDE2LjU4Ni02LjU2MmguMDMxYTYuNTkgNi41OSAwIDAxNi41NTkgNi42MTdsLS4xMjUgMjguMzY3YTYuNTg4IDYuNTg4IDAgMDEtNi41ODYgNi41NTl6bTQzLjU2MiAzMy43MDNhNi41ODUgNi41ODUgMCAwMS05IDIuNDFMNzMuNjcyIDg4LjE3MmE2LjU4OSA2LjU4OSAwIDExNi41OS0xMS40MWwyNC42NTYgMTQuMjM0YTYuNTg2IDYuNTg2IDAgMDEyLjQxIDl6bTAgMCIgZmlsbD0iI2ZmYzUxOSIvPjwvc3ZnPg==;" value="K3S" vertex="1">
+          <mxGeometry height="64.41" width="64.41" x="67.79000000000002" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-35" parent="KIfqwpqvIgpDve812TTp-19" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Owner : Celestin&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Lenovo Thinkpad P50&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;6 cpu, 24 RAM&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="121" x="75" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-25" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="200" width="200" x="548" y="518" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-26" parent="KIfqwpqvIgpDve812TTp-25" style="fillColor=none;strokeColor=#5A6C86;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#5A6C86;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="200" width="200" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-27" connectable="0" parent="KIfqwpqvIgpDve812TTp-25" style="group" value="" vertex="1">
+          <mxGeometry height="80" width="80" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-28" parent="KIfqwpqvIgpDve812TTp-27" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" value="" vertex="1">
+          <mxGeometry height="70" width="70" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-29" parent="KIfqwpqvIgpDve812TTp-27" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/assets/kubernetes/1/node.svg;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-30" parent="KIfqwpqvIgpDve812TTp-25" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;editableCssRules=.*;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCI+PHBhdGggZD0iTTExNC40MzQgMTEuODc1SDEzLjU0N0M2LjA3NCAxMS44OTguMDIzIDE3Ljk0OSAwIDI1LjQyMnY3Ny43MTljLjAyMyA3LjQ3MiA2LjA3NCAxMy41MjMgMTMuNTQ3IDEzLjU0NmgxMDAuODg3YzcuNDcyLS4wMjMgMTMuNTIzLTYuMDc0IDEzLjU0Ni0xMy41NDZWMjUuNDJjLS4wMjMtNy40NzItNi4wNzQtMTMuNTIzLTEzLjU0Ni0xMy41NDZ6TTU0LjA3OCA4OC4wOTRsLTI0LjYyMSAxNC4zMDhhNi41OTIgNi41OTIgMCAwMS05LjAwOC0yLjM4NiA2LjU5IDYuNTkgMCAwMTIuMzg3LTkuMDA4bDI0LjYyMS0xNC4zMDlhNi41ODcgNi41ODcgMCAwMTkuMDEyIDIuMzgzIDYuNTkzIDYuNTkzIDAgMDEtMi4zOSA5LjAxMnptOS42ODgtMjEuODAxaC0uMDMyYTYuNTkgNi41OSAwIDAxLTYuNTU4LTYuNjE3bC4xMjUtMjguMzY0YTYuNTg3IDYuNTg3IDAgMDE2LjU4Ni02LjU2MmguMDMxYTYuNTkgNi41OSAwIDAxNi41NTkgNi42MTdsLS4xMjUgMjguMzY3YTYuNTg4IDYuNTg4IDAgMDEtNi41ODYgNi41NTl6bTQzLjU2MiAzMy43MDNhNi41ODUgNi41ODUgMCAwMS05IDIuNDFMNzMuNjcyIDg4LjE3MmE2LjU4OSA2LjU4OSAwIDExNi41OS0xMS40MWwyNC42NTYgMTQuMjM0YTYuNTg2IDYuNTg2IDAgMDEyLjQxIDl6bTAgMCIgZmlsbD0iI2ZmYzUxOSIvPjwvc3ZnPg==;" value="K3S" vertex="1">
+          <mxGeometry height="64.41" width="64.41" x="67.79000000000002" y="79" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-36" parent="KIfqwpqvIgpDve812TTp-25" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Owner : Alain&lt;/div&gt;&lt;div&gt;HP Victus Laptop VM&lt;/div&gt;&lt;div&gt;10 cpu, 8G RAM&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="121" x="76" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="KIfqwpqvIgpDve812TTp-32" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Physical Cluster&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="45" width="523" x="60" y="365" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
