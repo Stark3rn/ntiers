@@ -34,11 +34,11 @@ Toutes les machines tournent sous **Ubuntu 26.04**.
 
 Pour que nos machines puissent communiquer à tout moment, nous utilisons un réseau virtuel [Tailscale](https://tailscale.com/) (offre Basic gratuite).
 
-| Hostname        | IP Tailscale |
-|:----------------|:------------:|
-| `ntiers-lilian` |              |
-| `kube`          |              |
-| `kbs`           |              |
+| Hostname        |  IP  Tailscale  |
+|:----------------|:---------------:|
+| `ntiers-lilian` | 100.116.195.94  |
+| `kube`          | 100.117.159.127 |
+| `kbs`           | 100.108.118.15  |
 
 ## Cluster
 

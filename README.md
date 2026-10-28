@@ -8,8 +8,11 @@ Ce dépôt contient toute la documentation et la configuration du projet : un cl
 
 ```
 .
-├── docs/   # Documentation : infrastructure, répartition des tâches, runbooks, diagrammes
-└── src/    # Scripts d'installation et de configuration (helmfiles + dotfiles)
+├── docs/         # Documentation : infrastructure, répartition des tâches, runbooks, diagrammes
+└── src/
+    ├── config-ubuntu.sh   # Configuration post-install d'une machine (exécution locale)
+    ├── ansible/           # Équivalent Ansible de config-ubuntu.sh (exécution à distance)
+    └── kubernetes/        # Helmfiles + values.yaml de chaque service du cluster
 ```
 
 ## Documentation
