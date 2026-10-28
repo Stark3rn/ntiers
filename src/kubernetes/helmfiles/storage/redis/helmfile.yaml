@@ -1,0 +1,8 @@
+releases:
+  - name: redis
+    namespace: storage
+    createNamespace: true
+    chart: oci://registry-1.docker.io/bitnamicharts/redis
+    version: 28.3.10
+    values:
+      - ../../../values/storage/redis/values.yaml

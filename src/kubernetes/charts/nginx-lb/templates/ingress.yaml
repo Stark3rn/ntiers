@@ -1,0 +1,23 @@
+# Ingress provisoire via Traefik (déjà fourni par k3s/k3d) le temps que la
+# vraie couche "Entry Point" (Apache LB, cf. docs/infra.md) soit implémentée.
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "nginx-lb.fullname" . }}
+  labels:
+    {{- include "nginx-lb.labels" . | nindent 4 }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  rules:
+    - host: {{ .Values.ingress.host | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "nginx-lb.fullname" . }}
+                port:
+                  number: {{ .Values.service.port }}
+{{- end }}

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: apache-static
+description: Serveur web statique Apache de ntiers, docroot sur un partage NFS (catégorie static-web)
+type: application
+version: 0.1.0
+appVersion: "2.4"

@@ -1,0 +1,7 @@
+releases:
+  - name: php-fpm
+    namespace: core-web
+    createNamespace: true
+    chart: ../../../charts/php-fpm
+    values:
+      - ../../../values/core-web/php-fpm/values.yaml

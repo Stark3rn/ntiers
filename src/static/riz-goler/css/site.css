@@ -1,0 +1,150 @@
+:root {
+  --rg-blue: #2E7BC6;
+  --rg-blue-dark: #1C5FA8;
+  --rg-orange: #EF7D33;
+  --rg-cream: #F7F2E7;
+  --rg-navy: #1C2B4A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Baloo 2', 'Comic Sans MS', system-ui, sans-serif;
+  background: var(--rg-cream);
+  color: var(--rg-navy);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+header nav .nav-logo {
+  height: 40px;
+}
+
+header nav a {
+  color: var(--rg-navy);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+header nav a.active,
+header nav a:hover {
+  color: var(--rg-orange);
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.hero .logo {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
+.hero h1 {
+  color: var(--rg-blue-dark);
+  font-size: 2.4rem;
+  margin: 0.5rem 0;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--rg-orange);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.joke-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: #fff;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.joke-form textarea {
+  min-height: 90px;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.joke-form input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.joke-form button {
+  align-self: flex-start;
+  background: var(--rg-blue);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.errors {
+  color: #b3261e;
+  padding-left: 1.2rem;
+}
+
+.jokes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.jokes-list li {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.jokes-list .author {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--rg-blue-dark);
+  font-weight: 700;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #8a8578;
+  font-size: 0.85rem;
+}

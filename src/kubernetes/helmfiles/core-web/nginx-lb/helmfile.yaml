@@ -1,0 +1,7 @@
+releases:
+  - name: nginx-lb
+    namespace: core-web
+    createNamespace: true
+    chart: ../../../charts/nginx-lb
+    values:
+      - ../../../values/core-web/nginx-lb/values.yaml

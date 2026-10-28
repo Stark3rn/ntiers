@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nfs-server.fullname" . }}
+  labels:
+    {{- include "nfs-server.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "nfs-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "nfs-server.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: nfs-server
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            privileged: true
+          env:
+            - name: SHARED_DIRECTORY
+              value: {{ .Values.sharedDirectory | quote }}
+          ports:
+            - name: nfs
+              containerPort: 2049
+          volumeMounts:
+            - name: data
+              mountPath: {{ .Values.sharedDirectory }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "nfs-server.fullname" . }}-data

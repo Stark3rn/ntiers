@@ -1,0 +1,10 @@
+# Usage : helmfile -f helmfiles/helmfile.yaml apply
+
+helmfiles:
+  - path: storage/mongodb/helmfile.yaml
+  - path: storage/redis/helmfile.yaml
+  - path: storage/haproxy/helmfile.yaml
+  - path: static-web/nfs-server/helmfile.yaml
+  - path: static-web/apache/helmfile.yaml
+  - path: core-web/php-fpm/helmfile.yaml
+  - path: core-web/nginx-lb/helmfile.yaml

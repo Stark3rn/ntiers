@@ -1,0 +1,57 @@
+replicaCount: 2
+
+containerPorts:
+  - name: mongodb
+    containerPort: 27017
+  - name: redis
+    containerPort: 6379
+
+service:
+  type: ClusterIP
+  ports:
+    - name: mongodb
+      port: 27017
+      targetPort: mongodb
+      protocol: TCP
+    - name: redis
+      port: 6379
+      targetPort: redis
+      protocol: tcp
+
+configuration: |
+  global
+      log stdout format raw local0
+      maxconn 4096
+
+  defaults
+      log global
+      mode tcp
+      timeout connect 5s
+      timeout client  1m
+      timeout server  1m
+
+  frontend fe_mongodb
+      bind *:27017
+      default_backend be_mongodb
+
+  backend be_mongodb
+      balance roundrobin
+      option tcp-check
+      server mongodb-0 mongodb-0.mongodb-headless.storage.svc.cluster.local:27017 check
+      server mongodb-1 mongodb-1.mongodb-headless.storage.svc.cluster.local:27017 check
+
+  frontend fe_redis
+      bind *:6379
+      default_backend be_redis
+
+  backend be_redis
+      option tcp-check
+      server redis-master redis-master.storage.svc.cluster.local:6379 check
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi

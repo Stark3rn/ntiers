@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  repository: php
+  tag: 8.5-fpm-alpine
+  pullPolicy: IfNotPresent
+
+service:
+  port: 9000
+
+env: []
+
+resources: {}
