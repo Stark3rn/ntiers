@@ -1,0 +1,7 @@
+releases:
+  - name: nfs-server
+    namespace: static-web
+    createNamespace: true
+    chart: ../../../charts/nfs-server
+    values:
+      - ../../../values/static-web/nfs-server/values.yaml

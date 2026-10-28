@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" role="img" aria-label="Riz-Goler — Cuisine joyeuse &amp; conviviale">
+  <text x="240" y="76" text-anchor="middle" font-family="'Baloo 2','Comic Sans MS',sans-serif" font-weight="800" font-size="64" fill="#1C5FA8">RIZ</text>
+  <g fill="#E8A33D">
+    <ellipse cx="120" cy="150" rx="8" ry="16" transform="rotate(-20 120 150)"/>
+    <ellipse cx="102" cy="176" rx="8" ry="16" transform="rotate(-20 102 176)"/>
+    <ellipse cx="360" cy="150" rx="8" ry="16" transform="rotate(20 360 150)"/>
+    <ellipse cx="378" cy="176" rx="8" ry="16" transform="rotate(20 378 176)"/>
+  </g>
+  <path d="M132 160h216c0 48-48 84-108 84s-108-36-108-84z" fill="#2E7BC6"/>
+  <path d="M148 160c12-8 20-20 16-36 20 8 28-4 24-20 20 0 28 12 24 28 20-4 32 8 32 28z" fill="#FFFFFF"/>
+  <circle cx="196" cy="148" r="6" fill="#1C2B4A"/>
+  <circle cx="284" cy="148" r="6" fill="#1C2B4A"/>
+  <path d="M196 168c12 10 64 10 76 0" stroke="#1C2B4A" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="240" y="282" text-anchor="middle" font-family="'Baloo 2','Comic Sans MS',sans-serif" font-weight="800" font-size="64" fill="#EF7D33">GOLER</text>
+  <text x="240" y="310" text-anchor="middle" font-family="'Baloo 2','Comic Sans MS',sans-serif" font-weight="700" font-size="16" letter-spacing="1" fill="#1C2B4A">CUISINE JOYEUSE &amp; CONVIVIALE</text>
+</svg>

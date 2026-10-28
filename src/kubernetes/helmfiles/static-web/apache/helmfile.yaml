@@ -1,0 +1,7 @@
+releases:
+  - name: apache
+    namespace: static-web
+    createNamespace: true
+    chart: ../../../charts/apache-static
+    values:
+      - ../../../values/static-web/apache/values.yaml

@@ -1,0 +1,14 @@
+image:
+  repository: itsthenetwork/nfs-server-alpine
+  tag: latest
+  pullPolicy: IfNotPresent
+
+sharedDirectory: /exports
+
+persistence:
+  size: 2Gi
+  storageClassName: ""
+
+service:
+  port: 2049
+  clusterIP: ""

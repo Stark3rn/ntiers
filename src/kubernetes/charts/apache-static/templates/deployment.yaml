@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "apache-static.fullname" . }}
+  labels:
+    {{- include "apache-static.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "apache-static.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "apache-static.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/content: {{ .Values.files | toYaml | sha256sum }}
+    spec:
+      initContainers:
+        - name: seed-content
+          image: "{{ .Values.seedImage.repository }}:{{ .Values.seedImage.tag }}"
+          command:
+            - sh
+            - -c
+            - |
+              set -e
+              mkdir -p /export/css /export/logo
+              cp /config/about-html /export/about.html
+              cp /config/site-css /export/css/site.css
+              cp /config/logo-icon-svg /export/logo/riz-goler-icon.svg
+              cp /config/logo-reduit-svg /export/logo/riz-goler-reduit.svg
+              cp /config/logo-full-svg /export/logo/riz-goler-full.svg
+              echo "Contenu statique copié sur le partage NFS."
+          volumeMounts:
+            - name: content
+              mountPath: /config
+            - name: nfs-export
+              mountPath: /export
+      containers:
+        - name: apache
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+          volumeMounts:
+            - name: nfs-export
+              mountPath: /usr/local/apache2/htdocs
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: content
+          configMap:
+            name: {{ include "apache-static.fullname" . }}-content
+        - name: nfs-export
+          persistentVolumeClaim:
+            claimName: {{ include "apache-static.fullname" . }}-nfs-pvc

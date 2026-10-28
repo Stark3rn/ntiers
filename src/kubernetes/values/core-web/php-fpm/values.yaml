@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: ntiers/php-fpm
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  port: 9000
+
+env:
+  - name: REDIS_HOST
+    value: haproxy.storage.svc.cluster.local
+  - name: REDIS_PORT
+    value: "6379"
+  - name: MONGODB_URI
+    value: "mongodb://ntiers:changeme-mongodb-user@haproxy.storage.svc.cluster.local:27017/ntiers"
+  - name: MONGODB_DATABASE
+    value: "ntiers"
+  - name: STATIC_BASE_URL
+    value: "http://nfs.riz-goler.fr"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi

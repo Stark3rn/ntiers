@@ -1,0 +1,29 @@
+architecture: replicaset
+replicaCount: 2
+
+auth:
+  enabled: true
+  rootPassword: "changeme-mongodb-root"
+  usernames:
+    - ntiers
+  passwords:
+    - "changeme-mongodb-user"
+  databases:
+    - ntiers
+
+persistence:
+  enabled: true
+  size: 8Gi
+
+service:
+  type: ClusterIP
+  ports:
+    mongodb: 27017
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

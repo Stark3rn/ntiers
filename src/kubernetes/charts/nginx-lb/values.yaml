@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: 1.29-alpine
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: traefik
+  host: ""
+
+phpFpm:
+  host: php-fpm.core-web.svc.cluster.local
+  port: 9000
+
+serverBlock: |
+  server {
+      listen 80;
+      server_name _;
+
+      location / {
+          fastcgi_pass   {{ .Values.phpFpm.host }}:{{ .Values.phpFpm.port }};
+          fastcgi_index  index.php;
+          include        fastcgi_params;
+          fastcgi_param  SCRIPT_FILENAME /app/public/index.php;
+          fastcgi_param  REQUEST_URI     $request_uri;
+      }
+  }
+
+resources: {}

@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: 1.29-alpine
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  
+ingress:
+  enabled: true
+  className: traefik
+  host: "web.riz-goler.fr"
+
+phpFpm:
+  host: php-fpm.core-web.svc.cluster.local
+  port: 9000
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 150m
+    memory: 128Mi

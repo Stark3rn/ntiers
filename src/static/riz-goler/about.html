@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>À propos — Riz-Goler</title>
+  <link rel="icon" href="/logo/riz-goler-icon.svg">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header>
+  <nav>
+    <a href="http://web.riz-goler.fr/"><img src="/logo/riz-goler-reduit.svg" alt="Riz-Goler" class="nav-logo"></a>
+    <a href="http://web.riz-goler.fr/">Accueil</a>
+    <a href="/about.html" class="active">À propos</a>
+    <a href="http://web.riz-goler.fr/blagues">Blagues</a>
+  </nav>
+</header>
+<main>
+  <h1>À propos de Riz-Goler</h1>
+  <p>
+    Riz-Goler est né d'une idée toute simple : et si on riait autant qu'on mange de riz ?
+    Ce site est un espace sans compte, sans friction, où n'importe qui peut venir déposer
+    sa meilleure (ou sa pire) blague de riz, et repartir avec le sourire.
+  </p>
+  <p>
+    Pas de modération lourde, pas de formulaire interminable : on valide juste que ta
+    blague tient debout, et hop, elle rejoint la liste.
+  </p>
+  <p>
+    Ce site fait partie de <strong>ntiers</strong>, une infrastructure n-tiers pédagogique
+    déployée sur un cluster Kubernetes.
+  </p>
+</main>
+<footer>
+  <p>&copy; <span id="year"></span> Riz-Goler — Cuisine joyeuse &amp; conviviale.</p>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

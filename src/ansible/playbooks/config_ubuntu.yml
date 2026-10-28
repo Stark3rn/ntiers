@@ -1,0 +1,79 @@
+---
+# Voir docs/install-ubuntu.md.
+#
+# Variables :
+#   ssh_port           port SSH cible (défaut : 6767)
+#   tailscale_authkey  clé d'authentification Tailscale (tskey-auth-...), à
+#                      passer en ligne de commande :
+#                      ansible-playbook playbooks/config_ubuntu.yml \
+#                        -e tailscale_authkey=tskey-auth-xxxxx
+#                      Sans clé, la machine doit se connecter manuellement via "sudo tailscale up".
+#
+# Les handlers (redémarrage de services) ne se déclenchent qu'à la toute fin
+# du play, une fois toutes les tâches passées, pour ne pas perdre la main sur
+# la connexion SSH en cours pendant que le port change.
+
+- name: Configuration post-installation Ubuntu (ntiers)
+  hosts: ntiers
+  become: true
+
+  vars:
+    ssh_port: 6767
+    tailscale_authkey: ""
+
+  tasks:
+    - name: MàJ Ubuntu
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+        upgrade: dist
+
+    - name: Install OpenSSH server et NFS client
+      # nfs-common est requis par kubelet pour monter les volumes nfs
+      ansible.builtin.apt:
+        name:
+          - openssh-server
+          - nfs-common
+        state: present
+
+    - name: Configurer le port SSH
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^[#\s]*Port\s+\d+'
+        line: "Port {{ ssh_port }}"
+        validate: "/usr/sbin/sshd -t -f %s"
+      notify: Restart ssh
+
+    - name: Installer Tailscale
+      ansible.builtin.shell: curl -fsSL https://tailscale.com/install.sh | sh
+      args:
+        creates: /usr/bin/tailscale
+
+    - name: Vérifier la connexion Tailscale
+      ansible.builtin.command: tailscale status
+      register: tailscale_status
+      changed_when: false
+      failed_when: false
+
+    - name: Connecter la machine au tailnet (via authkey)
+      ansible.builtin.command: >
+        tailscale up --authkey={{ tailscale_authkey }} --ssh
+      when:
+        - tailscale_authkey | length > 0
+        - tailscale_status.rc != 0 or 'Logged out' in tailscale_status.stdout
+
+    - name: Avertir si Tailscale attend une connexion manuelle
+      ansible.builtin.debug:
+        msg: >-
+          Tailscale n'est pas connecté sur cette machine. Lancer "sudo tailscale up --ssh"
+          manuellement sur {{ inventory_hostname }} pour l'authentification interactive.
+      when:
+        - tailscale_authkey | length == 0
+        - tailscale_status.rc != 0 or 'Logged out' in tailscale_status.stdout
+
+  handlers:
+    - name: Restart ssh
+      ansible.builtin.systemd:
+        name: ssh
+        state: restarted
+        daemon_reload: true

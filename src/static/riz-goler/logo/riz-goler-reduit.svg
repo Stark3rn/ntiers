@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="240" height="200" role="img" aria-label="Riz-Goler">
+  <text x="120" y="48" text-anchor="middle" font-family="'Baloo 2','Comic Sans MS',sans-serif" font-weight="800" font-size="40" fill="#1C5FA8">RIZ</text>
+  <g fill="#E8A33D">
+    <ellipse cx="60" cy="90" rx="5" ry="10" transform="rotate(-20 60 90)"/>
+    <ellipse cx="50" cy="105" rx="5" ry="10" transform="rotate(-20 50 105)"/>
+    <ellipse cx="180" cy="90" rx="5" ry="10" transform="rotate(20 180 90)"/>
+    <ellipse cx="190" cy="105" rx="5" ry="10" transform="rotate(20 190 105)"/>
+  </g>
+  <path d="M66 100h108c0 24-24 42-54 42s-54-18-54-42z" fill="#2E7BC6"/>
+  <path d="M74 100c6-4 10-10 8-18 10 4 14-2 12-10 10 0 14 6 12 14 10-2 16 4 16 14z" fill="#FFFFFF"/>
+  <circle cx="98" cy="94" r="3.4" fill="#1C2B4A"/>
+  <circle cx="142" cy="94" r="3.4" fill="#1C2B4A"/>
+  <path d="M98 104c6 5 32 5 38 0" stroke="#1C2B4A" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+  <text x="120" y="178" text-anchor="middle" font-family="'Baloo 2','Comic Sans MS',sans-serif" font-weight="800" font-size="40" fill="#EF7D33">GOLER</text>
+</svg>
