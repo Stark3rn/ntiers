@@ -20,6 +20,39 @@ function mongo_jokes_collection(): array
     return [$manager, $database . '.jokes'];
 }
 
+const JOKES_CACHE_KEY = 'ntiers:jokes:latest';
+const JOKES_CACHE_TTL = 60;
+
+/**
+ * Connexion Redis, ou null si indisponible.
+ */
+function redis_client(): ?Redis
+{
+    static $client = false;
+    if ($client !== false) {
+        return $client;
+    }
+
+    try {
+        $redis = new Redis();
+        $redis->connect(
+            env('REDIS_HOST', 'localhost'),
+            (int) env('REDIS_PORT', '6379'),
+            1.0
+        );
+        $password = env('REDIS_PASSWORD');
+        if ($password !== null) {
+            $redis->auth($password);
+        }
+        $client = $redis;
+    } catch (Throwable $e) {
+        error_log('riz-goler: redis indisponible: ' . $e->getMessage());
+        $client = null;
+    }
+
+    return $client;
+}
+
 function render(string $template, array $vars = []): void
 {
     extract($vars, EXTR_SKIP);

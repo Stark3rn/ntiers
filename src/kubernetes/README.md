@@ -31,6 +31,12 @@ Un serveur **NFS** interne au cluster (`nfs-server`) exporte un volume, monté c
 
 Le type de volume Kubernetes `nfs` exige le paquet `nfs-common` sur les nœuds qui montent ce volume (installé par les scripts de config)
 
+### Dépannage : pod Apache bloqué en `Init:0/1`
+
+Le montage NFS est fait par le **kubelet, sur l'hôte du nœud** (pas dans un pod), tant que le volume n'est pas monté, l'initContainer ne démarre pas.
+Diagnostic : `kubectl describe pod -n static-web <pod-apache>`, section *Events* (`FailedMount`).
+
+
 ## Core Web Application
 
 NGINX LB (`nginx-lb`) termine le HTTP et forwarde tout en FastCGI vers l'application PHP-FPM (`php-fpm`), qui accède à Redis/MongoDB via le HAProxy de la catégorie storage. Image PHP à construire depuis [`src/docker/php-fpm/`](../docker/php-fpm/), c'est l'app **riz-goler** : un site de blagues sans compte. La page "à propos" et les images vivent côté static-web.

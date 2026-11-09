@@ -13,6 +13,8 @@ env:
     value: haproxy.storage.svc.cluster.local
   - name: REDIS_PORT
     value: "6379"
+  - name: REDIS_PASSWORD
+    value: "changeme-redis"
   - name: MONGODB_URI
     value: "mongodb://ntiers:changeme-mongodb-user@haproxy.storage.svc.cluster.local:27017/ntiers"
   - name: MONGODB_DATABASE
