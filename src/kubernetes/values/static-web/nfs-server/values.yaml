@@ -1,1 +1,7 @@
 # Configuration du serveur NFS (namespace static-web).
+
+service:
+  # IP figée : le kubelet monte le NFS depuis l'hôte du nœud, qui ne sait pas
+  # résoudre *.svc.cluster.local ni (sans split DNS) riz-goler.fr.
+  # Apache (values/static-web/apache) référence cette IP dans nfs.server.
+  clusterIP: 10.43.26.41   # nfsd.riz-goler.fr

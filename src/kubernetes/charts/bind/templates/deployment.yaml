@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "bind.fullname" . }}
+  labels:
+    {{- include "bind.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  {{- if .Values.hostPort.enabled }}
+  {{- if not .Values.nodeSelector }}
+  {{- fail "hostPort.enabled nécessite nodeSelector (le port 53 ne doit être pris que sur un nœud précis)" }}
+  {{- end }}
+  # Le hostPort ne peut être pris que par un pod à la fois sur le nœud.
+  strategy:
+    type: Recreate
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "bind.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "bind.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+    spec:
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: bind
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: dns-udp
+              containerPort: 53
+              protocol: UDP
+              {{- if .Values.hostPort.enabled }}
+              hostPort: 53
+              {{- end }}
+            - name: dns-tcp
+              containerPort: 53
+              protocol: TCP
+              {{- if .Values.hostPort.enabled }}
+              hostPort: 53
+              {{- end }}
+          readinessProbe:
+            tcpSocket:
+              port: 53
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: config
+              mountPath: /etc/bind/named.conf
+              subPath: named.conf
+            - name: config
+              mountPath: /etc/bind/zones/db.{{ .Values.zone.name }}
+              subPath: db.{{ .Values.zone.name }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "bind.fullname" . }}-config

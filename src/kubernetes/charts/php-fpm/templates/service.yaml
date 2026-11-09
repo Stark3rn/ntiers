@@ -6,6 +6,9 @@ metadata:
     {{- include "php-fpm.labels" . | nindent 4 }}
 spec:
   type: ClusterIP
+  {{- if .Values.service.clusterIP }}
+  clusterIP: {{ .Values.service.clusterIP }}
+  {{- end }}
   ports:
     - name: fastcgi
       port: {{ .Values.service.port }}

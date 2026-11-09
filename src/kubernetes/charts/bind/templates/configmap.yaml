@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "bind.fullname" . }}-config
+  labels:
+    {{- include "bind.labels" . | nindent 4 }}
+data:
+  named.conf: |
+{{ tpl .Values.namedConf . | nindent 4 }}
+  db.{{ .Values.zone.name }}: |
+{{ include "bind.zoneFile" . | nindent 4 }}

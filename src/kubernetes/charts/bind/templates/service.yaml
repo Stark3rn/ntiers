@@ -1,0 +1,55 @@
+# ClusterIP : utilisable depuis les pods (ex. forward CoreDNS).
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bind.fullname" . }}
+  labels:
+    {{- include "bind.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  {{- if .Values.service.clusterIP }}
+  clusterIP: {{ .Values.service.clusterIP }}
+  {{- end }}
+  ports:
+    - { name: dns-udp, port: 53, protocol: UDP, targetPort: dns-udp }
+    - { name: dns-tcp, port: 53, protocol: TCP, targetPort: dns-tcp }
+  selector:
+    {{- include "bind.selectorLabels" . | nindent 4 }}
+{{- if .Values.nodeExposure.enabled }}
+---
+# LoadBalancer géré par le servicelb de k3s : ouvre le port 53 sur l'IP de
+# chaque nœud (donc sur leur IP Tailscale), sans opérateur Tailscale.
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bind.fullname" . }}-lb
+  labels:
+    {{- include "bind.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  ports:
+    - { name: dns-udp, port: 53, protocol: UDP, targetPort: dns-udp }
+    - { name: dns-tcp, port: 53, protocol: TCP, targetPort: dns-tcp }
+  selector:
+    {{- include "bind.selectorLabels" . | nindent 4 }}
+{{- end }}
+{{- if .Values.tailscale.enabled }}
+---
+# Nécessite l'opérateur Tailscale installé dans le cluster.
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bind.fullname" . }}-ts
+  annotations:
+    tailscale.com/hostname: {{ .Values.tailscale.hostname }}
+  labels:
+    {{- include "bind.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  loadBalancerClass: tailscale
+  ports:
+    - { name: dns-udp, port: 53, protocol: UDP, targetPort: dns-udp }
+    - { name: dns-tcp, port: 53, protocol: TCP, targetPort: dns-tcp }
+  selector:
+    {{- include "bind.selectorLabels" . | nindent 4 }}
+{{- end }}

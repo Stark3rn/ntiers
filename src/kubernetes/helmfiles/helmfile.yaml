@@ -1,6 +1,7 @@
 # Usage : helmfile -f helmfiles/helmfile.yaml apply
 
 helmfiles:
+  - path: dns/bind/helmfile.yaml
   - path: storage/mongodb/helmfile.yaml
   - path: storage/redis/helmfile.yaml
   - path: storage/haproxy/helmfile.yaml

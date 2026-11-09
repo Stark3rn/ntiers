@@ -1,0 +1,19 @@
+{{- if .Values.corednsCustom.enabled }}
+{{- if not .Values.service.clusterIP }}
+{{- fail "corednsCustom.enabled nécessite service.clusterIP (CoreDNS forward exige une IP)" }}
+{{- end }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+  labels:
+    {{- include "bind.labels" . | nindent 4 }}
+data:
+  {{ .Values.zone.name | replace "." "-" }}.server: |
+    {{ .Values.zone.name }}:53 {
+        errors
+        cache 30
+        forward . {{ .Values.service.clusterIP }}
+    }
+{{- end }}

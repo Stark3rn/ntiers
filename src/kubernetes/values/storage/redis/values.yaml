@@ -10,6 +10,7 @@ master:
     size: 4Gi
   service:
     type: ClusterIP
+    clusterIP: 10.43.161.29   # rd.riz-goler.fr
     ports:
       redis: 6379
   resources:

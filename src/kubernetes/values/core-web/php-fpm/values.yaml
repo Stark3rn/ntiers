@@ -6,17 +6,18 @@ image:
   pullPolicy: Always
 
 service:
+  clusterIP: 10.43.89.247   # php.riz-goler.fr
   port: 9000
 
 env:
   - name: REDIS_HOST
-    value: haproxy.storage.svc.cluster.local
+    value: hap.riz-goler.fr
   - name: REDIS_PORT
     value: "6379"
   - name: REDIS_PASSWORD
     value: "changeme-redis"
   - name: MONGODB_URI
-    value: "mongodb://ntiers:changeme-mongodb-user@haproxy.storage.svc.cluster.local:27017/ntiers"
+    value: "mongodb://ntiers:changeme-mongodb-user@hap.riz-goler.fr:27017/ntiers"
   - name: MONGODB_DATABASE
     value: "ntiers"
   - name: STATIC_BASE_URL

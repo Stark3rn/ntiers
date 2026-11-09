@@ -1,6 +1,14 @@
 nfs:
-  server: "nfs.riz-goler.fr"
+  # = nfsd.riz-goler.fr (ClusterIP figée, values/static-web/nfs-server).
+  # EXCEPTION à la règle « on passe par BIND » : le montage NFS est fait par le
+  # kubelet sur l'hôte du nœud, dont le résolveur ne passe pas par BIND. À
+  # remplacer par "nfsd.riz-goler.fr" une fois le split DNS Tailscale en place.
+  # Ne pas utiliser "nfs.riz-goler.fr" : c'est le site HTTP (Traefik).
+  server: "10.43.26.41"
   path: "/"
+
+service:
+  clusterIP: 10.43.189.143   # apache.riz-goler.fr
 
 ingress:
   enabled: true

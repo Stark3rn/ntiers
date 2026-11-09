@@ -8,6 +8,7 @@ containerPorts:
 
 service:
   type: ClusterIP
+  clusterIP: 10.43.39.92   # hap.riz-goler.fr (et mdb.riz-goler.fr)
   ports:
     - name: mongodb
       port: 27017
@@ -23,6 +24,9 @@ configuration: |
       log stdout format raw local0
       maxconn 4096
 
+  # kube-dns relaie riz-goler.fr vers BIND (coredns-custom) : rd.riz-goler.fr
+  # passe donc par BIND. Les pods MongoDB (headless, IP éphémères) restent
+  # résolus par kube-dns : exception, cf. docs/dns.md.
   resolvers kube
       nameserver dns 10.43.0.10:53
       accepted_payload_size 8192
@@ -51,7 +55,7 @@ configuration: |
 
   backend be_redis
       option tcp-check
-      server redis-master redis-master.storage.svc.cluster.local:6379 check resolvers kube init-addr none
+      server redis-master rd.riz-goler.fr:6379 check resolvers kube init-addr none
 
 resources:
   requests:

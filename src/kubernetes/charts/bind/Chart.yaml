@@ -1,0 +1,6 @@
+apiVersion: v2
+name: bind
+description: Chart local pour le serveur DNS BIND9 de ntiers (zone riz-goler.fr)
+type: application
+version: 0.1.0
+appVersion: "9.20"

@@ -73,3 +73,5 @@ Les services sont exposés sous le domaine `riz-goler.fr`.
 | Monitoring           | Uptime Kuma                                  |
 
 Le détail des sous-domaines et la répartition de la configuration par personne sont dans [repartition_taches.md](repartition_taches.md).
+
+La carte complète nom de domaine -> IP et la règle de résolution entre services sont dans [dns.md](dns.md).

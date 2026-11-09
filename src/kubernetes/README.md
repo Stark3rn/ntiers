@@ -21,6 +21,10 @@ kubernetes/
 - Chaque `helmfile.yaml` référence son `values.yaml` par chemin relatif, et peut être appliqué indépendamment : `helmfile -f helmfiles/<catégorie>/<service>/helmfile.yaml apply`.
 - [`helmfiles/helmfile.yaml`](helmfiles/helmfile.yaml) agrège tous les services déclarés, dans l'ordre où ils doivent être installés. `helmfile -f helmfiles/helmfile.yaml apply` installe/mets à jour tout le cluster en une fois.
 
+## DNS (BIND)
+
+Tous les services s'appellent entre eux par leur nom `*.riz-goler.fr`, résolu par **BIND** (chart [`charts/bind`](charts/bind), zone dans [`values/dns/bind/values.yaml`](values/dns/bind/values.yaml)). Les ClusterIP des Services sont figées en dur dans chaque `values.yaml` pour rester alignées avec la zone. Carte nom -> IP, exceptions et procédure d'ajout d'un service : [docs/dns.md](../../docs/dns.md).
+
 ## Storage
 
 MongoDB (replicaset, 2 nœuds + 1 arbitre) et Redis (1 master + 2 replicas) sont exposés en interne au cluster via un **HAProxy** qui fait office de load balancer TCP devant les deux - cf. [`values/storage/haproxy/values.yaml`](values/storage/haproxy/values.yaml) pour le détail des frontends/backends, et les limites de ce type de LB face à des bases répliquées (pas de détection du primary).
@@ -35,6 +39,8 @@ Le type de volume Kubernetes `nfs` exige le paquet `nfs-common` sur les nœuds q
 
 Le montage NFS est fait par le **kubelet, sur l'hôte du nœud** (pas dans un pod), tant que le volume n'est pas monté, l'initContainer ne démarre pas.
 Diagnostic : `kubectl describe pod -n static-web <pod-apache>`, section *Events* (`FailedMount`).
+
+Cause fréquente : `Failed to resolve server ...`. Le kubelet monte depuis l'hôte, qui ne résout ni `*.svc.cluster.local` ni forcément `riz-goler.fr`. Le PV pointe donc sur la **ClusterIP figée** du `nfs-server` (`10.43.26.41`, définie dans les deux values). Le champ `spec.nfs.server` d'un PV est immuable : après modification, supprimer le PV/PVC avant de réappliquer (`kubectl delete pvc -n static-web apache-nfs-pvc; kubectl delete pv apache-nfs-pv`). Les données restent dans le PVC du `nfs-server`.
 
 
 ## Core Web Application

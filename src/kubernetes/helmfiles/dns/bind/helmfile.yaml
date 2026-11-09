@@ -1,0 +1,7 @@
+releases:
+  - name: bind
+    namespace: dns
+    createNamespace: true
+    chart: ../../../charts/bind
+    values:
+      - ../../../values/dns/bind/values.yaml

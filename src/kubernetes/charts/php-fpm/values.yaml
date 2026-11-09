@@ -6,6 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
+  clusterIP: ""
   port: 9000
 
 env: []

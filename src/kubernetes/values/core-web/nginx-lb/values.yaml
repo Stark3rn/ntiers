@@ -7,6 +7,7 @@ image:
 
 service:
   type: ClusterIP
+  clusterIP: 10.43.96.37   # nlb.riz-goler.fr
   port: 80
   
 ingress:
@@ -15,7 +16,7 @@ ingress:
   host: "web.riz-goler.fr"
 
 phpFpm:
-  host: php-fpm.core-web.svc.cluster.local
+  host: php.riz-goler.fr   # résolu par BIND -> 10.43.89.247
   port: 9000
 
 resources:
