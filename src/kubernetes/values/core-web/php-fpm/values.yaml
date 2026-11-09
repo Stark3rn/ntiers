@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: ntiers/php-fpm
+  repository: ghcr.io/stark3rn/ntiers/php-fpm
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   port: 9000

@@ -50,6 +50,8 @@ Les machines sont regroupées dans un cluster Kubernetes déployé avec [k3s](ht
 | `ntiers-lilian` | worker | Lilian   |
 | `kbs`           | worker | Alain    |
 
+Les nœuds communiquent exclusivement via Tailscale : chacun doit déclarer `node-ip` et `flannel-iface: tailscale0` dans `/etc/rancher/k3s/config.yaml`. Procédure et dépannage : [k3s-cluster.md](k3s-cluster.md).
+
 ## Services
 
 Les services sont exposés sous le domaine `riz-goler.fr`.

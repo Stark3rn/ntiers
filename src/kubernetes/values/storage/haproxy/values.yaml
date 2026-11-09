@@ -16,12 +16,17 @@ service:
     - name: redis
       port: 6379
       targetPort: redis
-      protocol: tcp
+      protocol: TCP
 
 configuration: |
   global
       log stdout format raw local0
       maxconn 4096
+
+  resolvers kube
+      nameserver dns 10.43.0.10:53
+      accepted_payload_size 8192
+      hold valid 10s
 
   defaults
       log global
@@ -37,8 +42,8 @@ configuration: |
   backend be_mongodb
       balance roundrobin
       option tcp-check
-      server mongodb-0 mongodb-0.mongodb-headless.storage.svc.cluster.local:27017 check
-      server mongodb-1 mongodb-1.mongodb-headless.storage.svc.cluster.local:27017 check
+      server mongodb-0 mongodb-0.mongodb-headless.storage.svc.cluster.local:27017 check resolvers kube init-addr none
+      server mongodb-1 mongodb-1.mongodb-headless.storage.svc.cluster.local:27017 check resolvers kube init-addr none
 
   frontend fe_redis
       bind *:6379
@@ -46,7 +51,7 @@ configuration: |
 
   backend be_redis
       option tcp-check
-      server redis-master redis-master.storage.svc.cluster.local:6379 check
+      server redis-master redis-master.storage.svc.cluster.local:6379 check resolvers kube init-addr none
 
 resources:
   requests:

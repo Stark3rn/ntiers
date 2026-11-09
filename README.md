@@ -20,6 +20,7 @@ Ce dépôt contient toute la documentation et la configuration du projet : un cl
 | Document                                              | Contenu                                                  |
 |:------------------------------------------------------|:---------------------------------------------------------|
 | [infra.md](docs/infra.md)                             | Machines, système, réseau, cluster et services           |
+| [k3s-cluster.md](docs/k3s-cluster.md)                 | Installation k3s sur Tailscale, vérifications, dépannage |
 | [repartition_taches.md](docs/repartition_taches.md)   | Qui configure quel service                               |
 | [diagrams/](docs/diagrams/)                           | Schémas matériel et services (sources `.drawio` + `.svg`) |
 

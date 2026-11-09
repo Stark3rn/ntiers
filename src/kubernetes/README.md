@@ -36,3 +36,18 @@ Le type de volume Kubernetes `nfs` exige le paquet `nfs-common` sur les nœuds q
 NGINX LB (`nginx-lb`) termine le HTTP et forwarde tout en FastCGI vers l'application PHP-FPM (`php-fpm`), qui accède à Redis/MongoDB via le HAProxy de la catégorie storage. Image PHP à construire depuis [`src/docker/php-fpm/`](../docker/php-fpm/), c'est l'app **riz-goler** : un site de blagues sans compte. La page "à propos" et les images vivent côté static-web.
 
 NGINX n'a pas de copie du code applicatif : tout est forwardé en FastCGI vers un front controller unique (`/app/public/index.php`), c'est l'app PHP qui route selon `REQUEST_URI`.
+
+### Image PHP-FPM (GitHub Container Registry)
+
+L'image est publiée sur `ghcr.io/stark3rn/ntiers/php-fpm` (cf. [`values/core-web/php-fpm/values.yaml`](values/core-web/php-fpm/values.yaml)). Tous les nœuds la téléchargent eux-mêmes : plus aucun import manuel.
+
+- **Build automatique** : le workflow [`.github/workflows/php-fpm-image.yml`](../../.github/workflows/php-fpm-image.yml) construit et pousse l'image (`:latest` et `:<sha du commit>`) à chaque push sur `main` qui modifie `src/docker/php-fpm/`. Il peut aussi être lancé à la main (onglet *Actions* > *Run workflow*).
+- **Premier push** : le paquet est créé **privé** par défaut. Le passer en public (GitHub > profil/organisation > *Packages* > `ntiers/php-fpm` > *Package settings* > *Change visibility*), sinon les nœuds obtiennent un `ImagePullBackOff` (`401`/`403`).
+- **Déployer une nouvelle version** (`pullPolicy: Always` retélécharge `:latest` à chaque démarrage de pod) :
+  ```bash
+  kubectl rollout restart deployment/php-fpm -n core-web
+  kubectl get pods -n core-web -o wide
+  ```
+- **Build local** (test) : `cd src/docker/php-fpm && docker build -t ghcr.io/stark3rn/ntiers/php-fpm:latest .`
+- **Si on garde le paquet privé** : créer un secret `docker-registry` dans `core-web` (token avec `read:packages`) et ajouter `imagePullSecrets` au Deployment du chart.
+

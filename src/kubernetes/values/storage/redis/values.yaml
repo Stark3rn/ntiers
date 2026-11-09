@@ -17,8 +17,12 @@ master:
       cpu: 100m
       memory: 128Mi
     limits:
-      cpu: 250m
-      memory: 256Mi
+      cpu: 500m
+      memory: 512Mi
+  livenessProbe:
+    timeoutSeconds: 10
+  readinessProbe:
+    timeoutSeconds: 5
 
 replica:
   replicaCount: 2
@@ -30,5 +34,9 @@ replica:
       cpu: 100m
       memory: 128Mi
     limits:
-      cpu: 250m
-      memory: 256Mi
+      cpu: 500m
+      memory: 512Mi
+  livenessProbe:
+    timeoutSeconds: 10
+  readinessProbe:
+    timeoutSeconds: 5
